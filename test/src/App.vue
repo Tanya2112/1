@@ -82,9 +82,8 @@ export default {
     removeTasks(index) {
       const per = this.tasks.length;
       if(per > 1) {
-        const quest = confirm('Вы действительно хотите удалить список дел?');
+        const quest = confirm('Вы действительно хотите удалить список дел ' + this.tasks[index].title + '?');
         if (quest) {
-          // this.tasks[index].lists.splice(0, this.tasks[index].lists.length);
           this.choiceCases = 0;
           this.tasks.splice(index, 1);
         }
@@ -114,7 +113,7 @@ export default {
               done: false
           });
           this.tasks[this.choiceCases].color = 1;
-          alert('Дело ' + text +' добавлено')
+          alert('Дело ' + text +' добавлено в ' + this.tasks[this.choiceCases].title)
         }
         else {
           alert("Вы ввели пустую строку")
@@ -122,7 +121,7 @@ export default {
       }
     },
     removeLists(index) {
-      const quest = confirm('Вы действительно хотите удалить это дело?');
+      const quest = confirm('Вы действительно хотите удалить это дело из ' + this.tasks[this.choiceCases].title + '?');
       if(quest) {
         this.tasks[this.choiceCases].lists.splice(index,1);
       }
@@ -142,10 +141,6 @@ export default {
     ChoiceSelectedItem() {
       this.active = false;
     }
-  },
-  mounted (){
-    //console.log(this.tasks[0].lists.length)
-
   },
   components: {
       Todo,
